@@ -1,6 +1,6 @@
 {
-  "name"             : "dev-pos-releases",
-  "out_file": "/data/logs/pos-releases/dev-pos-releases-out.log",
+  "name"             : "dev-pos-release-server",
+  "out_file": "/data/logs/pos-release-server/dev-pos-release-server-out.log",
   "script"           : "app.js",
   "max_restarts"     : 50, // defaults to 15
   "exec_mode"        : "fork",
