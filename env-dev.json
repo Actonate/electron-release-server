@@ -1,0 +1,10 @@
+{
+  "name"             : "dev-pos-releases",
+  "out_file": "/data/logs/pos-releases/dev-pos-releases-out.log",
+  "script"           : "app.js",
+  "max_restarts"     : 50, // defaults to 15
+  "exec_mode"        : "fork",
+  "autorestart"      : true, // enable/disable automatic restart when an app crashes or exits
+  "env": {
+  }
+}
