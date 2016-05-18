@@ -9,12 +9,22 @@ var fsx = require('fs-extra');
 var crypto = require('crypto');
 var Promise = require('bluebird');
 
-var SkipperDisk = require('skipper-disk');
+// var SkipperDisk = require('skipper-disk');
+var SkipperDisk = require('skipper-s3');
+
+var s3Options = {
+  key: sails.config.files.key,
+  secret: sails.config.files.secret
+  bucket: sails.config.files.bucket,
+  region: sails.config.files.region,
+  endpoint: sails.config.files.endpoint,
+  token: sails.config.files.token
+}
 
 var AssetService = {};
 
 AssetService.serveFile = function(req, res, asset) {
-  var fileAdapter = SkipperDisk();
+  var fileAdapter = SkipperDisk(s3Options);
   // Sent file properties in header
   res.setHeader('Content-disposition', 'attachment; filename=' + asset.name);
   res.setHeader('Content-type', mime.lookup(asset.fd));
@@ -64,7 +74,7 @@ AssetService.serveFile = function(req, res, asset) {
 AssetService.getHash = function(fd) {
   return new Promise(function(resolve, reject) {
 
-    var fileAdapter = SkipperDisk();
+    var fileAdapter = SkipperDisk(s3Options);
 
     var hash = crypto.createHash('sha1');
     hash.setEncoding('hex');
@@ -126,7 +136,7 @@ AssetService.deleteFile = function(asset) {
     throw new Error('The provided asset does not have a file descriptor');
   }
 
-  var fileAdapter = SkipperDisk();
+  var fileAdapter = SkipperDisk(s3Options);
   var fileAdapterRmAsync = Promise.promisify(fileAdapter.rm);
 
   return fileAdapterRmAsync(asset.fd);
