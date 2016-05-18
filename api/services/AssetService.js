@@ -14,7 +14,7 @@ var SkipperDisk = require('skipper-s3');
 
 var s3Options = {
   key: sails.config.files.key,
-  secret: sails.config.files.secret
+  secret: sails.config.files.secret,
   bucket: sails.config.files.bucket,
   region: sails.config.files.region,
   endpoint: sails.config.files.endpoint,
