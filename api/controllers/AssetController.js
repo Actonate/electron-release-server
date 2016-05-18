@@ -193,7 +193,7 @@ module.exports = {
             // Create new instance of model using data from params
             Asset
               .create(_.merge({
-                name: sails.config.files.directory + '/' + uploadedFile.filename,
+                name: uploadedFile.filename,
                 hash: fileHash,
                 filetype: fileExt,
                 fd: uploadedFile.fd,
