@@ -1,7 +1,7 @@
 {
   "name"             : "prod-pos-release-server",
   "out_file": "/data/logs/pos-release-server/prod-pos-release-server-out.log",
-  "out_file": "/data/logs/pos-release-server/prod-pos-release-server-error-out.log",
+  "error_file": "/data/logs/pos-release-server/prod-pos-release-server-error-out.log",
   "script"           : "app.js",
   "max_restarts"     : 50, // defaults to 15
   "exec_mode"        : "fork",
